@@ -11,7 +11,7 @@ public class ArrayHomework {
                 count++;
             }
         }
-        System.out.println("6 ka -" + count + "hat");
+        System.out.println("6 ունենք - " + count + "հատ");
         System.out.println("___________");
         //2.
         for (int i = array.length - 1; i >= 0; i--) {
@@ -21,26 +21,41 @@ public class ArrayHomework {
         System.out.println("___________");
         //3.
         //array[] = {5, 7, 8, 6, 6, 7, 5, 4, 9, 7};
-        int find = 0;
         int sempl = 0;
-        for (int i1 : array){
+        for (int i = 0; i < array.length; i++) {
+            boolean isAlreadyCounted = false;
 
-            for (int i = 0; i < array.length; i++) {
-
-                if (i1 == array[i]) {
-                    find++;
-                    // ՍՏԵՂ ինչղ ենեմ որ արդեն եթե i1
-                    // մի անգամ ֆռացել է մասիվով, էլի նույն թվից հանդիպելու դեպքում չստուգի?
+            for (int j = 0; j < i; j++) {
+                if (array[i] == array[j]) {
+                    sempl++;
                 }
             }
-
-        if (find > 1) {
-            sempl++;
         }
-        }
-        System.out.println(sempl + "hat");
+        System.out.println("ունենք - " + sempl + " հատ կրկնվող");
+        System.out.println("___________");
 
-}
+//4.
+        char[] chars = {'բ', 'ա', 'ր', 'և', 'ա', 'շ', 'խ', 'ա', 'ր', 'հ'};
+        int charCount = 0;
+        for (char aChar : chars) {
+            switch (aChar) {
+                case 'ա':
+                case 'ե':
+                case 'է':
+                case 'ը':
+                case 'ի':
+                case 'ո':
+                case 'և':
+                case 'օ':
+                    charCount++;
+                    System.out.print(aChar + " ");
+            }
+
+
+        }
+        System.out.println();
+        System.out.println("Ունենք " + charCount + " ձայնավոր");
+    }
 }
 
 
