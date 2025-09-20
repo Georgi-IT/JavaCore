@@ -4,7 +4,7 @@ public class ArrayHomework {
     public static void main(String[] args) {
         //1.
         int n = 6;
-        int array[] = {5, 7, 8, 6, 6, 7, 5, 4, 9, 7};
+        int array[] = {5, 25, 25,25,100,100,200, 7, 4, 9,200, 4, 36, 4, 36, 9, 7};
         int count = 0;
         for (int i : array) {
             if (i == n) {
@@ -20,18 +20,27 @@ public class ArrayHomework {
         System.out.println();
         System.out.println("___________");
         //3.
-        //array[] = {5, 7, 8, 6, 6, 7, 5, 4, 9, 7};
-        int sempl = 0;
+        //array[] = {5, 25, 7,  4, 9,4, 36, 4, 36, 9, 7};
+        int recurring = 0;
+
         for (int i = 0; i < array.length; i++) {
             boolean isAlreadyCounted = false;
-
             for (int j = 0; j < i; j++) {
                 if (array[i] == array[j]) {
-                    sempl++;
+                    isAlreadyCounted = true;
+                    break;
+                }
+            }
+            if (!isAlreadyCounted) {
+                for (int j = i + 1; j < array.length; j++) {
+                    if (array[i] == array[j]) {
+                        recurring++;
+                        break;
+                    }
                 }
             }
         }
-        System.out.println("ունենք - " + sempl + " հատ կրկնվող");
+        System.out.println("ունենք - " + recurring + " հատ կրկնվող");
         System.out.println("___________");
 
 //4.
