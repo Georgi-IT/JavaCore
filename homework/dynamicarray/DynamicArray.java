@@ -54,11 +54,13 @@ public class DynamicArray {
             System.out.println("index out of bound");
         }
         int[] tmp = new int[size - 1];
-        for (int i = 0; i < index; i++) {
-            tmp[i] = array[i];
-        }
-        for (int j = index; j < size - 1; j++) {
-            tmp[j] = array[j + 1];
+        for (int i = 0; i < size - 1; i++) {
+
+            if (i < index) {
+                tmp[i] = array[i];
+            } else {
+                tmp[i] = array[i + 1];
+            }
         }
         array = tmp;
         for (int i = 0; i < array.length; i++) {
@@ -80,24 +82,29 @@ public class DynamicArray {
 
     //ավելացնել տրված value-ն տրված ինդեքսում, իսկ էղած էլեմենտները մի հատ աջ տանել։++++++
 //Եթե չկա նման ինդեքս, տպել որ չկա
+
+
     public void add(int index, int value) {
         int newvalue = 0;
         if (index < 0 || index >= size) {
             System.out.println("index out of bound");
 
-        }else {
+        } else {
             int[] tmp = new int[size + 1];
-            for (int i = 0; i < index; i++) {
-                tmp[i] = array[i];
+            for (int i = 0; i < size+1; i++) {
+                tmp[index] = value;
+                if(index > i) {
+                    tmp[i] = array[i];
+                }else if(index < i) {
+                    tmp[i] = array[i - 1];
+                }
+
             }
-            for (int a = index + 1; a < size + 1; a++) {
-                tmp[a] = array[a - 1];
-            }
-            tmp[index] = value;
+
             array = tmp;
             size++;
-            for (int i : array) {
-                System.out.print(i + " ");
+            for (int i = 0; i < size; i++) {
+                System.out.print(array[i] + " ");
             }
 
             System.out.println();
@@ -129,53 +136,3 @@ public class DynamicArray {
     }
 }
 
-
-//public class DynamicArray {
-//    private int[] array = new int[10];
-//    private int size = 0;
-//
-//    private void extend() {
-//        System.out.println("oldArray`");
-//        for (int i = 0; i < array.length; i++) {
-//            System.out.print(array[i] + " ");
-//        }
-//        System.out.println();
-//        int[] newArray = new int[array.length + 10];
-//        for (int i = 0; i < array.length; i++) {
-//            newArray[i] = array[i];
-//
-//        }
-//        array = newArray;
-//
-//    }
-//
-//    public void add(int value) {
-//        if (size >= array.length) {
-//            extend();
-//        }
-//        array[size] = value;
-//        size++;
-//    }
-//
-//    public DynamicArray() {
-//        Scanner scanner = new Scanner(System.in);
-//        String numbersStr = scanner.nextLine();
-//        String[] numbersArrStr = numbersStr.split(",");
-//        for (String s : numbersArrStr) {
-//            add(Integer.parseInt(s));
-//        }
-//        System.out.println("newArray`");
-//        for (int i = 0; i < numbersArrStr.length; i++) {
-//            System.out.print(numbersArrStr[i] + " ");
-//        }
-//    }
-//
-//    public int getByIndex(int index) {
-//        if (index >= 0 && index < array.length) {
-//            System.out.println(array[index]);
-//        } else
-//            System.out.println("-1");
-//        return -1;
-//
-//    }
-//}
